@@ -1,0 +1,6 @@
+SELECT MAX(chrt.name) as cohort, count(sbmsns.id) as total_submissions
+FROM cohorts chrt
+  JOIN students std ON std.cohort_id = chrt.id
+  JOIN assignment_submissions sbmsns ON sbmsns.student_id = std.id
+GROUP BY chrt.id
+ORDER BY total_submissions DESC;
